@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap');
+
+
 :root {
   --green: #059625;
   --green2: #007b1f;
@@ -38,6 +39,16 @@ a {
 p {
   line-height: 1.65;
   color: var(--muted);
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
 }
 .container {
     max-width: 1920px;
@@ -79,21 +90,29 @@ p {
     font-size: 14px;
     display: flex;
 }
+.btn:hover {
+    background: #fff;
+    color: #000;
+    transition: .9s;
+    border: 1px solid #ccc;
+}
+
 .btn {
-    background: #059625;
     color: #fff;
     cursor: pointer;
+    background: #059625;
     border: 0;
     border-radius: 999px;
     justify-content: center;
     align-items: center;
+    gap: 10px;
     padding: 14px 42px;
+    font-family: Mona Sans, sans-serif;
+    font-size: 20px;
     font-weight: 600;
     display: inline-flex;
     box-shadow: 0 9px 22px #05962529;
-    font-family: "Mona Sans", sans-serif;
-    font-size: 20px;
-    gap: 10px;
+    border: 1px solid #059625;
 }
 .btn.white {
   background: #fff;
@@ -476,7 +495,7 @@ nav.nav a {
     line-height: 48px;
     font-style: italic;
     font-family: Mona Sans, sans-serif;
-    font-weight: 100 !important;
+    font-weight: 500;
 }
 .author {
   display: flex;
@@ -520,6 +539,14 @@ nav.nav a {
   justify-content: space-between;
   box-shadow: 0 14px 30px rgba(0, 88, 18, 0.15);
 }
+.noCard {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 8px !important;
+}
+section#pricing .btn {
+    font-size: 18px;
+}
 .cta h2 {
     margin: 0 0 6px;
     font-size: 45px;
@@ -527,16 +554,16 @@ nav.nav a {
 .cta p {
   color: #e6ffeb;
   margin: 0;
+  font-size: 22px;
 }
-.noCard {
-  text-align: center;
-  font-size: 12px;
-  margin-top: 8px !important;
-}
+
 .footer {
   background: var(--dark);
   color: #fff;
   padding: 56px 0 20px;
+}
+.footerLogo img {
+    filter: brightness(0) invert(1);
 }
 .footerGrid {
   display: grid;
@@ -549,7 +576,6 @@ nav.nav a {
   align-items: center;
   font-size: 22px;
   font-weight: 950;
-  margin-bottom: 22px;
 }
 .footerLogoIcon {
   width: 39px;
@@ -559,19 +585,21 @@ nav.nav a {
   display: grid;
   place-items: center;
 }
-.footer p,
-.footer a {
-  color: #cdd4cf;
-  font-size: 13px;
+.footer p, .footer a {
+    color: #cdd4cf;
+    font-size: 18px;
 }
 .footer h4 {
-  font-size: 16px;
-  margin: 0 0 18px;
-  color: #fff;
+    color: #fff;
+    margin: 0 0 18px;
+    font-size: 25px;
+    font-weight: 600;
 }
 .footer a {
-  display: block;
-  margin: 0 0 12px;
+    margin: 0 0 12px;
+    display: block;
+    font-size: 20px;
+    line-height: 30px;
 }
 .socials {
   display: flex;
@@ -579,10 +607,9 @@ nav.nav a {
   gap: 11px;
   margin-top: 36px;
 }
-.socials svg,
-.socials span {
-  width: 25px;
-  height: 25px;
+.socials a {
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
   background: #fff;
   color: #222;
@@ -591,14 +618,20 @@ nav.nav a {
   padding: 5px;
   font-weight: 900;
 }
+.footerBottom .footerCopyright {
+    font-size: 19px;
+}
+.container.footerBottom a {
+    margin-bottom: 0;
+}
 .footerBottom {
-  border-top: 1px solid #5b5f5c;
-  margin-top: 36px;
-  padding-top: 20px;
-  display: flex;
-  justify-content: space-between;
-  color: #cdd4cf;
-  font-size: 12px;
+    color: #cdd4cf;
+    border-top: 1px solid #5b5f5c;
+    justify-content: space-between;
+    margin-top: 36px;
+    padding-top: 20px;
+    font-size: 22px;
+    display: flex;
 }
 .auditPage {
   background: #f8faf9;
@@ -889,6 +922,9 @@ nav.nav a {
 }
 
 @media (max-width: 480px) {
+  .quote {
+    padding: 20px !important;
+}
   .card h3 {
     font-size: 20px !important;
     line-height: 30px !important;

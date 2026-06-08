@@ -3,6 +3,7 @@ import DeviceImage from "next/image";
 import Header from "@/components/Header";
 import Quote from "next/image";
 import Author from "next/image";
+import FooterlogoImage from "next/image";
 import {
   ShieldCheck,
   EyeOff,
@@ -25,7 +26,13 @@ import {
   MoveRight,
   MessageSquareLock,
 } from "lucide-react";
-
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaLinkedinIn,
+  FaYoutube,
+  FaXTwitter,
+} from "react-icons/fa6";
 export default function Home() {
   return (
     <>
@@ -328,53 +335,110 @@ by design</span></div>
       </main>
 
       <footer className="footer">
-        <div className="container footerGrid">
-          <div className="footerBrand">
-            <div className="footerLogo">
-              <span className="footerLogoIcon">↗</span>SpendShift
-            </div>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
-              iaculis, ante lacinia iaculis tincidunt.
-            </p>
-            <div className="socials">
-              <span>f</span>
-              <span>𝕏</span>
-              <span>▶</span>
-              <span>◎</span>
-              <span>in</span>
-            </div>
-          </div>
-          <div>
-            <h4>Quick Links</h4>
-            <a>How it Works</a>
-            <a>What You Get</a>
-            <a>Why SpendShift</a>
-            <a>Pricing</a>
-            <a>FAQ</a>
-          </div>
-          <div>
-            <h4>Services</h4>
-            <a>How it Works</a>
-            <a>What You Get</a>
-            <a>Finance reporting</a>
-          </div>
-          <div>
-            <h4>Privacy Policy</h4>
-            <a>FAQ</a>
-            <a>Terms & Condition</a>
-          </div>
-          <div>
-            <h4>Contact</h4>
-            <a>spendshiftinfo@gmail.com</a>
-            <a>098 2345 3455</a>
-          </div>
-        </div>
-        <div className="container footerBottom">
-          <span>© SpendShift 2026. All rights reserved</span>
-          <span>Terms and Conditions &nbsp; | &nbsp; Privacy Policy</span>
-        </div>
-      </footer>
+  <div className="container footerGrid">
+    <div className="footerBrand">
+      <div className="footerLogo">
+        <Link href="/" className="logo">
+          <FooterlogoImage
+            src="/logo.png"
+            alt="SpendShift"
+            width={180}
+            height={50}
+            priority
+          />
+        </Link>
+      </div>
+
+      <p>
+        SpendShift helps Australians uncover hidden money leaks, reduce
+        unnecessary spending, and build smarter financial habits with
+        personalised AI-powered savings insights.
+      </p>
+
+      <div className="socials">
+  <Link href="https://facebook.com" target="_blank">
+    <FaFacebookF size={20} />
+  </Link>
+
+  <Link href="https://x.com" target="_blank">
+    <FaXTwitter size={20} />
+  </Link>
+
+  <Link href="https://youtube.com" target="_blank">
+    <FaYoutube size={20} />
+  </Link>
+
+  <Link href="https://instagram.com" target="_blank">
+    <FaInstagram size={20} />
+  </Link>
+
+  <Link href="https://linkedin.com" target="_blank">
+    <FaLinkedinIn size={20} />
+  </Link>
+</div>
+    </div>
+
+    <div>
+      <h4>Quick Links</h4>
+
+      <Link href="#audit">How it Works</Link>
+      <Link href="#works">What You Get</Link>
+      <Link href="#why">Why SpendShift</Link>
+      <Link href="#pricing">Pricing</Link>
+      <Link href="#faq">FAQ</Link>
+    </div>
+
+    <div>
+      <h4>Services</h4>
+
+      <Link href="#audit">Audit Assessment</Link>
+      <Link href="/dashboard">Savings Dashboard</Link>
+      <Link href="/report">Finance Reporting</Link>
+    </div>
+
+    <div>
+      <h4>Legal</h4>
+
+      <Link href="/privacy-policy">Privacy Policy</Link>
+      <Link href="/terms-and-conditions">Terms & Conditions</Link>
+      <Link href="/cookies">Cookie Policy</Link>
+    </div>
+
+    <div>
+      <h4>Contact</h4>
+
+      <Link href="mailto:spendshiftinfo@gmail.com">
+        spendshiftinfo@gmail.com
+      </Link>
+
+      <Link href="tel:+6109823453455">
+        098 2345 3455
+      </Link>
+    </div>
+  </div>
+
+  <div className="container footerBottom">
+    <span className="footerCopyright">© SpendShift 2026. All rights reserved.</span>
+
+    <div
+      style={{
+        display: "flex",
+        gap: "16px",
+        flexWrap: "wrap",
+      }}
+    >
+      <Link href="/terms-and-conditions">
+        Terms & Conditions
+      </Link>
+
+      <span>|</span>
+
+      <Link href="/privacy-policy">
+        Privacy Policy
+      </Link>
+    </div>
+  </div>
+</footer>
     </>
   );
 }
