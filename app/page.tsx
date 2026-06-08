@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Device from "next/image";
+import DeviceImage from "next/image";
 import Header from "@/components/Header";
 import Quote from "next/image";
 import Author from "next/image";
@@ -104,8 +104,8 @@ export default function Home() {
                 <p>Bank-level security. We never share your information.</p>
               </div>
               <div className="phoneFrame1">
-                <Device
-                  src="/home/device.svg"
+                <DeviceImage
+                  src="/home/Device.svg"
                   alt="Device"
                   width={408}
                   height={800}
