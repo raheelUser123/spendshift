@@ -105,18 +105,12 @@ export default function Home() {
               </div>
               <div className="phoneFrame1">
                 <Device
-                  src="/home/device.png"
+                  src="/home/device.svg"
                   alt="Device"
-                  width={1000}
-                  height={1000}
+                  width={408}
+                  height={800}
                   priority
-                  style={{
-                    width: "50%",
-                    height: "100%",
-                    maxWidth: "100%",
-                    margin: "0 auto",
-                    display: "table",
-                  }}
+                  
                 />
               </div>
               {/* <div className="phoneFrame">

@@ -824,12 +824,25 @@ nav.nav a {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-@media (max-width: 720px) {
+@media (max-width: 800px) {
+  html, body {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+  .footerGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+  .btn {
+    font-size: 14px;
+    padding: 13px 20px;
+}
+  .container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+}
   .nav {
     display: none;
-  }
-  .hero {
-    padding-top: 44px;
   }
   .hero h1 {
     font-size: 44px;
@@ -844,7 +857,7 @@ nav.nav a {
   .stats,
   .leakTabs,
   .footerGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
   .steps:before {
     display: none;
@@ -873,4 +886,18 @@ nav.nav a {
   .miniCards {
     grid-template-columns: 1fr !important;
   }
+}
+
+@media (max-width: 480px) {
+  .card h3 {
+    font-size: 20px !important;
+    line-height: 30px !important;
+}
+  h1, h2, h3, h4, .brand, .heading, .logo {
+    font-size: 30px !important;
+    line-height: 40px !important;
+}
+.stat {
+    padding: 5px 14px;
+}
 }
