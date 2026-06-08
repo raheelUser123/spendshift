@@ -14,6 +14,7 @@ import {
   Target,
   TrendingUp,
   ArrowRight,
+  Lock,
 } from "lucide-react";
 
 const qs = [
@@ -105,7 +106,7 @@ export default function Audit() {
     <div className="auditPage">
       <Header simple />
 
-      <div className="progressWrap">
+      <div className="container progressWrap">
         <div className="progressMeta">
           <b>Audit Progress</b>
           <span>
@@ -118,7 +119,7 @@ export default function Audit() {
         </div>
       </div>
 
-      <div className="quizBox">
+      <div className="container">
         <div className="quizInner">
           <div className="icon" style={{ margin: "0 auto 20px" }}>
             <CurrentIcon />
@@ -154,9 +155,15 @@ export default function Audit() {
             {i === qs.length - 1 ? "See My Results" : "Next Question"}
             <ArrowRight size={18} />
           </button>
-
+<div className="auditNote">
+  <Lock size={16} strokeWidth={2.2} />
+  <span>
+    Takes less than 2 minutes. No credit card required.
+  </span>
+</div>
           <div className="safe">
-            <TrendingUp color="#059625" />
+            <div className="trend-ng-class">
+            <TrendingUp color="#059625" size={81} /></div>
             <div>
               <b>100% data-driven. 100% about you.</b>
               <p className="mini">

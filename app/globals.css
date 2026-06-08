@@ -50,6 +50,21 @@ p {
   opacity: 1;
   transform: translateY(0);
 }
+.heroVisual {
+  animation: float 5s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
 .container {
     max-width: 1920px;
     margin: 0 auto;
@@ -638,14 +653,13 @@ section#pricing .btn {
   min-height: 100vh;
 }
 .progressWrap {
-  max-width: 1120px;
   margin: 45px auto 20px;
-  padding: 0 24px;
 }
 .progressMeta {
-  display: flex;
-  justify-content: space-between;
-  font-size: 12px;
+    justify-content: space-between;
+    font-size: 18px;
+    display: flex;
+    font-family: 'Mona Sans', sans-serif;
 }
 .bar {
   height: 4px;
@@ -672,21 +686,46 @@ section#pricing .btn {
   box-shadow: 0 14px 35px rgba(20, 40, 26, 0.05);
   text-align: center;
 }
+.quizInner h2 {
+    font-size: 45px;
+    color: #3B3B3B;
+}
+.quizInner p {
+    font-size: 20px;
+}
 .options {
-  display: grid;
-  gap: 14px;
-  margin: 30px auto;
-  max-width: 620px;
-  text-align: left;
+    text-align: left;
+    gap: 16px;
+    max-width: 1020px;
+    margin: 30px auto;
+    display: grid;
+}
+.trend-ng-class svg {
+    stroke-width: 1.8;
+}
+.trend-ng-class {
+    width: 110px;
+    height: 110px;
+    background: #0596250F;
+    line-height: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7px;
 }
 .option {
-  border: 1px solid #dce8df;
-  border-radius: 12px;
-  padding: 16px 18px;
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  cursor: pointer;
+    cursor: pointer;
+    color: #3b3b3b;
+    border: 1px solid #dce8df;
+    border-radius: 12px;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 18px;
+    font-family: Mona Sans;
+    font-size: 24px;
+    font-weight: 600;
+    display: flex;
+    background: #fff;
 }
 .option.active {
   border-color: var(--green);
@@ -699,13 +738,46 @@ section#pricing .btn {
   border: 2px solid var(--green);
 }
 .safe {
-  margin-top: 28px;
-  background: #effaf1;
-  border-radius: 12px;
-  padding: 20px;
-  display: flex;
-  text-align: left;
-  gap: 16px;
+    text-align: left;
+    background: #CDEAD34D;
+    border-radius: 12px;
+    gap: 16px;
+    margin-top: 28px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+}
+.safe p {
+    margin: 9px 0;
+    font-size: 20px;
+    color: #373737;
+    line-height: 30px;
+}
+
+.safe b {
+    color: #3B3B3B;
+    font-size: 25px;
+    line-height: 34px;
+    margin: 0;
+    padding: 0;
+}
+.auditNote {
+    color: #737373;
+    background: #fff;
+    border-radius: 999px;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    font-family: 'Mona Sans';
+    font-size: 18px;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+}
+
+.auditNote svg {
+  color: #059625;
+  flex-shrink: 0;
 }
 .analysisCard {
   max-width: 850px;

@@ -91,7 +91,7 @@ export default function Home() {
                 <MoveRight size={18} strokeWidth={2.5} />
               </Link>
               <div className="spacer50"></div>
-              <div className="hero-bottom-text">
+              <div className="hero-bottom-text reveal">
                 <p className="margin-zero">
                   Free results in under 2 minutes. No credit card required.
                 </p>
