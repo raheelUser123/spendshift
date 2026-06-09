@@ -1,34 +1,65 @@
 "use client";
+
+import { Suspense, useEffect, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import Header from "@/components/Header";
-import { useEffect, useState } from "react";
-export default function Success() {
-  const [report, setReport] = useState("Generating your Claude AI report...");
+
+function SuccessContent() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [error, setError] = useState("");
+
   useEffect(() => {
-    const answers = JSON.parse(
-      localStorage.getItem("spendshift_answers") || "[]",
-    );
-    fetch("/api/generate-report", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ answers }),
-    })
-      .then((r) => r.json())
-      .then((d) => setReport(d.report || d.error || "Report generated."))
-      .catch(() =>
-        setReport("Could not generate report. Check ANTHROPIC_API_KEY."),
-      );
-  }, []);
+    async function createReport() {
+      const sessionId = searchParams.get("session_id");
+
+      if (!sessionId) {
+        setError("Missing payment session.");
+        return;
+      }
+
+      const res = await fetch("/api/create-report", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ sessionId }),
+      });
+
+      const data = await res.json();
+
+      if (data.reportId) {
+        router.push(`/report/${data.reportId}`);
+      } else {
+        setError(data.error || "Could not generate report.");
+      }
+    }
+
+    createReport();
+  }, [router, searchParams]);
+
+  return (
+    <div className="analysisCard">
+      <h1>Payment successful 🎉</h1>
+      <p>Generating your personalised SpendShift report...</p>
+
+      <div className="reportLoader">
+        <span />
+      </div>
+
+      {error && <p style={{ color: "red" }}>{error}</p>}
+    </div>
+  );
+}
+
+export default function SuccessPage() {
   return (
     <div className="auditPage">
       <Header simple />
-      <main className="success">
-        <div className="greenPanel">
-          <h1>Payment successful ✅</h1>
-          <p>Your unlocked savings report is ready below.</p>
-        </div>
-        <h2>Your Full SpendShift Report</h2>
-        <div className="reportText">{report}</div>
-      </main>
+
+      <Suspense fallback={<p>Loading payment session...</p>}>
+        <SuccessContent />
+      </Suspense>
     </div>
   );
 }
