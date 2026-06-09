@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "SpendShift",
-  description: "Find your biggest money leaks in under 2 minutes.",
+  description: "Find your biggest money leaks in under 2 minute.",
 };
 
 export default function RootLayout({
