@@ -1,7 +1,17 @@
 "use client";
 import Header from "@/components/Header";
 import { useEffect, useState } from "react";
-import { CheckCircle, Lock, ShieldCheck } from "lucide-react";
+import {
+  CheckCircle,
+  Lock,
+  ShieldCheck,
+  Circle,
+  LoaderCircle,
+  Wallet,
+  BarChart3,
+  Search,
+  Lightbulb,
+} from "lucide-react";
 const leaks = [
   ["HIGH IMPACT", "Takeaway & Food Delivery", "$1,300"],
   ["HIGH IMPACT", "Insurance Overpayment", "$900"],
@@ -13,6 +23,30 @@ const leaks = [
 export default function Results() {
   const [loading, setLoading] = useState(true);
   const [busy, setBusy] = useState(false);
+  const [progress, setProgress] = useState(0);
+  useEffect(() => {
+    let current = 0;
+
+    const progressTimer = setInterval(() => {
+      current += 3;
+
+      if (current >= 72) {
+        current = 72;
+        clearInterval(progressTimer);
+      }
+
+      setProgress(current);
+    }, 70);
+
+    const loadingTimer = setTimeout(() => {
+      setLoading(false);
+    }, 2300);
+
+    return () => {
+      clearInterval(progressTimer);
+      clearTimeout(loadingTimer);
+    };
+  }, []);
   useEffect(() => {
     const t = setTimeout(() => setLoading(false), 2300);
     return () => clearTimeout(t);
@@ -34,52 +68,112 @@ export default function Results() {
     return (
       <div className="auditPage">
         <Header simple />
-        <div className="progressWrap">
-          <div className="progressMeta">
-            <b>Audit Progress</b>
-            <span>Question 8 of 8</span>
-          </div>
-          <div className="bar">
-            <span style={{ width: "100%" }} />
-          </div>
-        </div>
-        <div className="analysisCard">
-          <div className="icon" style={{ margin: "0 auto 20px" }}>
-            <ShieldCheck />
-          </div>
-          <h2>Analysing your Answers...</h2>
-          <p>
-            We're scanning thousands of data points to find your biggest money
-            leaks.
-          </p>
-          <div className="circle">
-            <div>
-              <strong>72%</strong>
-              <br />
-              <span>Analysing</span>
+        <div className="container">
+          <div className="progressWrap ">
+            <div className="progressMeta">
+              <b>Audit Progress</b>
+              <span>Question 8 of 8</span>
+            </div>
+            <div className="bar">
+              <span style={{ width: "100%" }} />
             </div>
           </div>
-          <div className="checksList">
-            <div className="row">
-              Reviewing your spending patterns <CheckCircle color="#059625" />
+          <div className="analysisCard ">
+            <div className="icon" style={{ margin: "0 auto 20px" }}>
+              <ShieldCheck />
             </div>
-            <div className="row">
-              Comparing against smart benchmarks <CheckCircle color="#059625" />
+            <h2>Analysing your Answers...</h2>
+            <p>
+              We're scanning thousands of data points to find your biggest money
+              leaks.
+            </p>
+            <div
+              className="circle"
+              style={{
+                background: `conic-gradient(
+      #059625 ${progress * 3.6}deg,
+      #e5e7eb 0deg
+    )`,
+              }}
+            >
+              <div>
+                <strong>{progress}%</strong>
+                <br />
+                <span>Analysing</span>
+              </div>
             </div>
-            <div className="row">
-              Identifying overpayment opportunities <span>○</span>
+            <div className="checksList">
+              <div className="checkRow">
+                <div className="left">
+                  <div className="iconWrap">
+                    <Wallet size={18} />
+                  </div>
+                  <span>Reviewing your spending patterns</span>
+                </div>
+
+                <CheckCircle size={20} fill="#059625" color="#fff" />
+              </div>
+
+              <div className="checkRow">
+                <div className="left">
+                  <div className="iconWrap">
+                    <BarChart3 size={18} />
+                  </div>
+                  <span>Comparing against smart benchmarks</span>
+                </div>
+
+                {progress >= 30 ? (
+                  <CheckCircle size={20} fill="#059625" color="#fff" />
+                ) : (
+                  <LoaderCircle size={20} color="#059625" className="spin" />
+                )}
+              </div>
+
+              <div className="checkRow">
+                <div className="left">
+                  <div className="iconWrap">
+                    <Search size={18} />
+                  </div>
+                  <span>Identifying overpayment opportunities</span>
+                </div>
+
+                {progress >= 55 ? (
+                  <CheckCircle size={20} fill="#059625" color="#fff" />
+                ) : progress >= 35 ? (
+                  <LoaderCircle size={20} color="#059625" className="spin" />
+                ) : (
+                  <Circle size={16} fill="#9CA3AF" color="#9CA3AF" />
+                )}
+              </div>
+
+              <div className="checkRow">
+                <div className="left">
+                  <div className="iconWrap">
+                    <Lightbulb size={18} />
+                  </div>
+                  <span>Calculating your potential savings</span>
+                </div>
+
+                {progress >= 72 ? (
+                  <CheckCircle size={20} fill="#059625" color="#fff" />
+                ) : progress >= 60 ? (
+                  <LoaderCircle size={20} color="#059625" className="spin" />
+                ) : (
+                  <Circle size={16} fill="#9CA3AF" color="#9CA3AF" />
+                )}
+              </div>
             </div>
-            <div className="row">
-              Calculating potential savings <span>●</span>
-            </div>
-          </div>
-          <div className="safe">
-            <Lock color="#059625" />
-            <div>
-              <b>Your data is safe with us</b>
-              <p className="mini">
-                We use bank-level encryption and never share your information.
-              </p>
+            <div className="safe">
+              <div className="trend-ng-class">
+                <Lock color="#059625" size={81} />
+              </div>
+              <div>
+                <b>Your data is safe with us</b>
+                <p className="mini">
+                  We use bank-level encryption and never share your information.
+                  opportunities.
+                </p>
+              </div>
             </div>
           </div>
         </div>

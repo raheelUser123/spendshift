@@ -15,6 +15,7 @@ import {
   TrendingUp,
   ArrowRight,
   Lock,
+  ChevronDown,
 } from "lucide-react";
 
 const qs = [
@@ -78,6 +79,7 @@ const qs = [
 ];
 
 export default function Audit() {
+  const [open, setOpen] = useState(false);
   const r = useRouter();
   const [i, setI] = useState(0);
   const [answers, setAnswers] = useState<string[]>([]);
@@ -174,21 +176,27 @@ export default function Audit() {
           </div>
         </div>
 
-        <details
-          style={{
-            maxWidth: 920,
-            margin: "20px auto",
-            padding: "0 24px",
-          }}
-        >
-          <summary>
-            <b>Why do we ask these questions?</b>
-          </summary>
+       <div className="faqBlock">
+      <button
+        className="faqHeader"
+        onClick={() => setOpen(!open)}
+      >
+        <span>Why do we ask these questions?</span>
+
+        <div className={`faqIcon ${open ? "active" : ""}`}>
+          <ChevronDown size={18} />
+        </div>
+      </button>
+
+      {open && (
+        <div className="faqContent">
           <p>
-            These simple behavioural questions help benchmark common spending
-            categories without asking for bank access.
+            Your answers help us provide personalised insights that are
+            relevant to your situation.
           </p>
-        </details>
+        </div>
+      )}
+    </div>
       </div>
     </div>
   );

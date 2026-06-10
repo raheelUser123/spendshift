@@ -144,6 +144,58 @@ p {
 section#audit {
     padding: 60px 0px;
 }
+.faqBlock {
+    border-top: 1px solid #e5e7eb;
+    padding: 34px 0;
+    margin-top: 40px;
+}
+
+.faqHeader {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 0;
+}
+
+.faqHeader span {
+    color: #1f2937;
+    text-align: left;
+    font-size: 25px;
+    font-weight: 700;
+    font-family: 'Mona Sans';
+}
+
+.faqIcon {
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  background: #e8f5eb;
+  color: #059625;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s ease;
+  flex-shrink: 0;
+}
+
+.faqIcon.active {
+  transform: rotate(180deg);
+}
+
+.faqContent {
+  margin-top: 18px;
+}
+
+.faqContent p {
+  font-size: 18px;
+  color: #6b7280;
+  line-height: 1.7;
+  margin: 0;
+}
 nav.nav a {
     font-size: 20px;
     color: #000000;
@@ -779,27 +831,70 @@ section#pricing .btn {
   color: #059625;
   flex-shrink: 0;
 }
+.checksList {
+  margin-top: 30px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.checkRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.checkRow .left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.iconWrap {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #e8f5eb;
+  color: #059625;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkRow span {
+  font-size: 18px;
+  color: #2d2d2d;
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
 .analysisCard {
-  max-width: 850px;
   margin: 35px auto;
-  border: 4px solid #0797ff;
   border-radius: 18px;
   background: #fff;
   padding: 70px 40px;
   text-align: center;
 }
-.circle {
-  width: 240px;
-  height: 240px;
-  border-radius: 50%;
-  border: 9px solid #e8eee9;
-  border-top-color: #74d387;
-  border-right-color: var(--green);
-  border-bottom-color: var(--green);
-  display: grid;
-  place-items: center;
-  margin: 40px auto;
+.analysisCard h2 {
+font-size: 45px;
+color: #3B3B3B;
 }
+.analysisCard p {
+font-size: 20px;
+color: #3B3B3B;
+}
+
 .circle strong {
   font-size: 52px;
 }
@@ -807,6 +902,27 @@ section#pricing .btn {
   max-width: 560px;
   margin: 20px auto;
   text-align: left;
+}
+
+.circle {
+  width: 210px;
+  height: 210px;
+  border-radius: 50%;
+  margin: 40px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle > div {
+  width: 165px;
+  height: 165px;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 .row {
   display: flex;
@@ -992,7 +1108,33 @@ section#pricing .btn {
   border-radius: 999px;
   animation: reportLoading 1.2s ease-in-out infinite;
 }
+.unlockedReportBox {
+  position: sticky;
+  top: 110px;
+  max-height: calc(100vh - 140px);
+  overflow-y: auto;
+}
 
+.fullReportText {
+  margin-top: 24px;
+  white-space: pre-wrap;
+  font-size: 15px;
+  line-height: 1.8;
+  color: #374151;
+}
+
+.fullReportText h1,
+.fullReportText h2,
+.fullReportText h3 {
+  font-family: "Mona Sans", sans-serif;
+}
+
+@media (max-width: 900px) {
+  .unlockedReportBox {
+    position: static;
+    max-height: none;
+  }
+}
 @keyframes reportLoading {
   0% {
     transform: translateX(-100%);
