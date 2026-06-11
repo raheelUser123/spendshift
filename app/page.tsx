@@ -258,7 +258,7 @@ by design</span></div>
               <div className="stepNum">03</div>
               <div className="stepIconWrapper">
               <PieChart className="stepIcon" strokeWidth={1} size={67}/></div>
-              <h3>Get your top money leaks</h3>
+              <h3>Get your top money leak</h3>
               <p>See where you’re losing the most.</p>
             </div>
             <div>
